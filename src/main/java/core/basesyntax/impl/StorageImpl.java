@@ -67,20 +67,7 @@ public class StorageImpl<K, V> implements Storage<K, V> {
 
     @Override
     public V get(K key) {
-        int index = 0;
-        while (index < size()) {
-            if (storage[index][FIRST_INDEX_STORAGE] != null) {
-                if (storage[index][FIRST_INDEX_STORAGE].equals(key)) {
-                    return (V) storage[index][SECOND_INDEX_STORAGE];
-                }
-            } else {
-                if (key == null) {
-                    return (V) storage[index][SECOND_INDEX_STORAGE];
-                }
-            }
-            index++;
-        }
-        return null;
+        return searchOnKey(key)!=-1? (V) storage[searchOnKey(key)][SECOND_INDEX_STORAGE] :null;
     }
 
     @Override
