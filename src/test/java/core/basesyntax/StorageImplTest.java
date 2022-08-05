@@ -51,30 +51,68 @@ public class StorageImplTest {
     @Test
     public void getElementWithKeyNull() {
         Storage<Integer, String> storage = new StorageImpl<>();
-        String elementOne = "Element 1";
-        String elementTwo = "Element 2";
-        String elementTree = "Element 3";
-        String elementFour = "Element 4";
-        storage.put(1, elementOne);
-        storage.put(null, elementTwo);
-        storage.put(3, elementTree);
-        storage.put(4, elementFour);
+        String[] elemArr = new String[]{
+                "Element 1"
+                , "Element 2"
+                , "Element 3"
+                , "Element 4"
+                , "Element 5"
+                , "Element 6"
+                , "Element 7"
+                , "Element 8"
+                , "Element 9"
+                , "Element 10"
+        };
+        storage.put(1, elemArr[0]);
+        storage.put(null, elemArr[1]);
+        storage.put(3, elemArr[2]);
+        storage.put(4, elemArr[3]);
+        storage.put(5, elemArr[4]);
+        storage.put(6, elemArr[5]);
+        storage.put(7, elemArr[6]);
+        storage.put(8, elemArr[7]);
+        storage.put(9, elemArr[8]);
+        storage.put(10, elemArr[9]);
         Assert.assertEquals(
                 "Test failed! Method get(null) should return value",
-                elementTwo,
+                elemArr[1],
                 storage.get(null));
         Assert.assertEquals(
                 "Test failed! Method get(key) should return value",
-                elementOne,
+                elemArr[0],
                 storage.get(1));
         Assert.assertEquals(
                 "Test failed! Method get(key) should return value",
-                elementTree,
+                elemArr[2],
                 storage.get(3));
         Assert.assertEquals(
                 "Test failed! Method get(key) should return value",
-                elementFour,
+                elemArr[3],
                 storage.get(4));
+        Assert.assertEquals(
+                "Test failed! Method get(key) should return value",
+                elemArr[4],
+                storage.get(5));
+        Assert.assertEquals(
+                "Test failed! Method get(key) should return value",
+                elemArr[5],
+                storage.get(6));
+        Assert.assertEquals(
+                "Test failed! Method get(key) should return value",
+                elemArr[6],
+                storage.get(7));
+        Assert.assertEquals(
+                "Test failed! Method get(key) should return value",
+                elemArr[7],
+                storage.get(8));
+        Assert.assertEquals(
+                "Test failed! Method get(key) should return value",
+                elemArr[8],
+                storage.get(9));
+        Assert.assertEquals(
+                "Test failed! Method get(key) should return value",
+                elemArr[9],
+                storage.get(10));
     }
 
     @Test

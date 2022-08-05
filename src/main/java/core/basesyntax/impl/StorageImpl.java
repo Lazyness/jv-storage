@@ -3,7 +3,6 @@ package core.basesyntax.impl;
 import core.basesyntax.Storage;
 
 public class StorageImpl<K, V> implements Storage<K, V> {
-    private static int MIN_SIZE_STORAGE = 0;
     private final static int MAX_SIZE_STORAGE = 10;
     private final static int MAX_COUNT_GENERICS = 2;
     private final static int FIRST_INDEX_STORAGE = 0;
@@ -55,7 +54,7 @@ public class StorageImpl<K, V> implements Storage<K, V> {
 
     @Override
     public void put(K key, V value) {
-        if (MIN_SIZE_STORAGE < MAX_SIZE_STORAGE) {
+        if (size() < MAX_SIZE_STORAGE) {
             if (size() >= 1 && searchOnKey(key) != -1) {
                 putKeyAndValue(key, value);
             } else {
@@ -67,7 +66,7 @@ public class StorageImpl<K, V> implements Storage<K, V> {
 
     @Override
     public V get(K key) {
-        return searchOnKey(key)!=-1? (V) storage[searchOnKey(key)][SECOND_INDEX_STORAGE] :null;
+        return searchOnKey(key) != -1 ? (V) storage[searchOnKey(key)][SECOND_INDEX_STORAGE] : null;
     }
 
     @Override
@@ -76,7 +75,12 @@ public class StorageImpl<K, V> implements Storage<K, V> {
     }
 
     public StorageImpl() {
-        storage = new Object[MIN_SIZE_STORAGE][MAX_COUNT_GENERICS];
+        storage = new Object[0][MAX_COUNT_GENERICS];
     }
 
+    public void printResult() {
+        for (int i = 0; i < size(); i++) {
+            System.out.println("Key: " + storage[i][0] + " Value: " + storage[FIRST_INDEX_STORAGE][SECOND_INDEX_STORAGE]);
+        }
+    }
 }
